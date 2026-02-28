@@ -6,14 +6,13 @@ _s.set_page_config(page_title="VisualX | Electronic Configuration", layout="wide
 
 _s.markdown("<style>header,footer,.stDeployButton,[data-testid='stToolbar'],[data-testid='stSidebar']{display:none !important;}body,[data-testid='stAppViewContainer']{background-color:#0d0d0d !important;color:#fff;font-family:'Inter',sans-serif;}.t_c{border-left:3px solid #00FFFF;padding-left:20px;margin:20px 0 20px 0;}.m_t{font-family:'Courier New',monospace;font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;color:#fff;}.stSelectbox label{color:#ccc !important;font-family:'Courier New',monospace;text-transform:uppercase;font-size:0.9rem !important;}div[data-baseweb='select']{background-color:rgba(255,255,255,0.05);color:white;}</style><div class='t_c'><h1 class='m_t'>ELECTRONIC CONFIGURATION</h1></div>", unsafe_allow_html=True)
 
-_e="Hydrogen,Helium,Lithium,Beryllium,Boron,Carbon,Nitrogen,Oxygen,Fluorine,Neon,Sodium,Magnesium,Aluminum,Silicon,Phosphorus,Sulfur,Chlorine,Argon,Potassium,Calcium,Scandium,Titanium,Vanadium,Chromium*,Manganese,Iron,Cobalt,Nickel,Copper*,Zinc,Gallium,Germanium,Arsenic,Selenium,Bromine,Krypton,Rubidium,Strontium,Yttrium,Zirconium,Niobium*,Molybdenum*,Technetium,Ruthenium*,Rhodium*,Palladium*,Silver*,Cadmium,Indium,Tin,Antimony,Tellurium,Iodine,Xenon,Cesium,Barium,Lanthanum*,Cerium*,Praseodymium,Neodymium,Promethium,Samarium,Europium,Gadolinium*,Terbium,Dysprosium,Holmium,Erbium,Thulium,Ytterbium,Lutetium,Hafnium,Tantalum,Tungsten,Rhenium,Osmium,Iridium,Platinum*,Gold*,Mercury,Thallium,Lead,Bismuth,Polonium,Astatine,Radon,Francium,Radium,Actinium*,Thorium*,Protactinium*,Uranium*,Neptunium*,Plutonium,Americium,Curium*,Berkelium,Californium,Einsteinium,Fermium,Mendelevium,Nobelium,Lawrencium,Rutherfordium,Dubnium,Seaborgium,Bohrium,Hassium,Meitnerium,Darmstadtium,Roentgenium,Copernicium,Nihonium,Flerovium,Moscovium,Livermorium,Tennessine,Oganesson".split(",")
+# Added (*) to ALL 21 anomalous elements
+_e="Hydrogen,Helium,Lithium,Beryllium,Boron,Carbon,Nitrogen,Oxygen,Fluorine,Neon,Sodium,Magnesium,Aluminum,Silicon,Phosphorus,Sulfur,Chlorine,Argon,Potassium,Calcium,Scandium,Titanium,Vanadium,Chromium*,Manganese,Iron,Cobalt,Nickel,Copper*,Zinc,Gallium,Germanium,Arsenic,Selenium,Bromine,Krypton,Rubidium,Strontium,Yttrium,Zirconium,Niobium*,Molybdenum*,Technetium,Ruthenium*,Rhodium*,Palladium*,Silver*,Cadmium,Indium,Tin,Antimony,Tellurium,Iodine,Xenon,Cesium,Barium,Lanthanum*,Cerium*,Praseodymium,Neodymium,Promethium,Samarium,Europium,Gadolinium*,Terbium,Dysprosium,Holmium,Erbium,Thulium,Ytterbium,Lutetium,Hafnium,Tantalum,Tungsten,Rhenium,Osmium,Iridium,Platinum*,Gold*,Mercury,Thallium,Lead,Bismuth,Polonium,Astatine,Radon,Francium,Radium,Actinium*,Thorium*,Protactinium*,Uranium*,Neptunium*,Plutonium,Americium,Curium*,Berkelium,Californium,Einsteinium,Fermium,Mendelevium,Nobelium,Lawrencium*,Rutherfordium,Dubnium,Seaborgium,Bohrium,Hassium,Meitnerium,Darmstadtium,Roentgenium*,Copernicium,Nihonium,Flerovium,Moscovium,Livermorium,Tennessine,Oganesson".split(",")
 _el=[f"{i+1}: {n}" for i,n in enumerate(_e)]
 _sel=_s.selectbox("SELECT ELEMENT (Z = 1 to 118)",_el,index=5)
 _z=int(_sel.split(":")[0])
 
 def _g(z):
-    _x={24:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":1,"3d":5},29:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":1,"3d":10},41:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":1,"4d":4},42:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":1,"4d":5},46:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":0,"4d":10},47:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":1,"4d":10},78:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":2,"4d":10,"5p":6,"6s":1,"4f":14,"5d":9},79:{"1s":2,"2s":2,"2p":6,"3s":2,"3p":6,"4s":2,"3d":10,"4p":6,"5s":2,"4d":10,"5p":6,"6s":1,"4f":14,"5d":10}}
-    if z in _x:return _x[z]
     _o=[("1s",2),("2s",2),("2p",6),("3s",2),("3p",6),("4s",2),("3d",10),("4p",6),("5s",2),("4d",10),("5p",6),("6s",2),("4f",14),("5d",10),("6p",6),("7s",2),("5f",14),("6d",10),("7p",6)]
     _c={}
     _r=z
@@ -22,6 +21,17 @@ def _g(z):
         f=min(_r,c)
         _c[n]=f
         _r-=f
+    
+    # 21 Master Exceptions Override Engine
+    _ex={24:{"4s":1,"3d":5},29:{"4s":1,"3d":10},41:{"5s":1,"4d":4},42:{"5s":1,"4d":5},44:{"5s":1,"4d":7},45:{"5s":1,"4d":8},46:{"5s":0,"4d":10},47:{"5s":1,"4d":10},57:{"4f":0,"5d":1},58:{"4f":1,"5d":1},64:{"4f":7,"5d":1},78:{"6s":1,"5d":9},79:{"6s":1,"5d":10},89:{"5f":0,"6d":1},90:{"5f":0,"6d":2},91:{"5f":2,"6d":1},92:{"5f":3,"6d":1},93:{"5f":4,"6d":1},96:{"5f":7,"6d":1},103:{"6d":0,"7p":1},111:{"7s":1,"6d":10}}
+    
+    if z in _ex:
+        _c.update(_ex[z])
+        # Removes empty shells (like Palladium's 5s0)
+        _c={k:v for k,v in _c.items() if v>0}
+        # Re-sorts everything perfectly back into Aufbau rendering order
+        _ok=[k for k,v in _o]
+        _c={k:_c[k] for k in _ok if k in _c}
     return _c
 
 _jc=_j.dumps(_g(_z))
