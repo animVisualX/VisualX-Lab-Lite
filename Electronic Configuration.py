@@ -4,11 +4,18 @@ import json as _j
 
 _s.set_page_config(page_title="VisualX | Electronic Configuration", layout="wide")
 
-_s.markdown("<style>header,footer,.stDeployButton,[data-testid='stToolbar'],[data-testid='stSidebar']{display:none !important;}body,[data-testid='stAppViewContainer']{background-color:#0d0d0d !important;color:#fff;font-family:'Inter',sans-serif;}.t_c{border-left:3px solid #00FFFF;padding-left:20px;margin:20px 0 20px 0;}.m_t{font-family:'Courier New',monospace;font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;color:#fff;}.stSelectbox label{color:#ccc !important;font-family:'Courier New',monospace;text-transform:uppercase;font-size:0.9rem !important;}div[data-baseweb='select']{background-color:rgba(255,255,255,0.05);color:white;}</style><div class='t_c'><h1 class='m_t'>ELECTRONIC CONFIGURATION</h1></div>", unsafe_allow_html=True)
+_s.markdown("<style>header,footer,.stDeployButton,[data-testid='stToolbar'],[data-testid='stSidebar']{display:none !important;}body,[data-testid='stAppViewContainer']{background-color:#0d0d0d !important;color:#fff;font-family:'Inter',sans-serif;}.t_c{border-left:3px solid #00FFFF;padding-left:20px;margin:20px 0 20px 0;}.m_t{font-family:'Courier New',monospace;font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;color:#fff;}.stSelectbox label{color:#ccc !important;font-family:'Courier New',monospace;text-transform:uppercase;font-size:0.9rem !important;}div[data-baseweb='select']{background-color:rgba(255,255,255,0.05);color:white;} /* Custom VisualX Button CSS */ .stFormSubmitButton button{width:100%;background-color:transparent !important;color:#00FFFF !important;border:1px solid #00FFFF !important;font-family:'Courier New',monospace;letter-spacing:2px;transition:0.3s;padding:10px;margin-top:28px;}.stFormSubmitButton button:hover{background-color:#00FFFF !important;color:#0d0d0d !important;box-shadow:0 0 15px #00FFFF;}</style><div class='t_c'><h1 class='m_t'>ELECTRONIC CONFIGURATION</h1></div>", unsafe_allow_html=True)
 
 _e="Hydrogen,Helium,Lithium,Beryllium,Boron,Carbon,Nitrogen,Oxygen,Fluorine,Neon,Sodium,Magnesium,Aluminum,Silicon,Phosphorus,Sulfur,Chlorine,Argon,Potassium,Calcium,Scandium,Titanium,Vanadium,Chromium*,Manganese,Iron,Cobalt,Nickel,Copper*,Zinc,Gallium,Germanium,Arsenic,Selenium,Bromine,Krypton,Rubidium,Strontium,Yttrium,Zirconium,Niobium*,Molybdenum*,Technetium,Ruthenium*,Rhodium*,Palladium*,Silver*,Cadmium,Indium,Tin,Antimony,Tellurium,Iodine,Xenon,Cesium,Barium,Lanthanum*,Cerium*,Praseodymium,Neodymium,Promethium,Samarium,Europium,Gadolinium*,Terbium,Dysprosium,Holmium,Erbium,Thulium,Ytterbium,Lutetium,Hafnium,Tantalum,Tungsten,Rhenium,Osmium,Iridium,Platinum*,Gold*,Mercury,Thallium,Lead,Bismuth,Polonium,Astatine,Radon,Francium,Radium,Actinium*,Thorium*,Protactinium*,Uranium*,Neptunium*,Plutonium,Americium,Curium*,Berkelium,Californium,Einsteinium,Fermium,Mendelevium,Nobelium,Lawrencium*,Rutherfordium,Dubnium,Seaborgium,Bohrium,Hassium,Meitnerium,Darmstadtium,Roentgenium*,Copernicium,Nihonium,Flerovium,Moscovium,Livermorium,Tennessine,Oganesson".split(",")
 _el=[f"{i+1}: {n}" for i,n in enumerate(_e)]
-_sel=_s.selectbox("SELECT ELEMENT (Z = 1 to 118)",_el,index=5)
+
+with _s.form("v_form"):
+    _c1, _c2 = _s.columns([3,1])
+    with _c1:
+        _sel=_s.selectbox("SELECT ELEMENT (Z = 1 to 118)",_el,index=5)
+    with _c2:
+        _sub=_s.form_submit_button("RENDER ENGINE")
+
 _z=int(_sel.split(":")[0])
 
 def _g(z):
