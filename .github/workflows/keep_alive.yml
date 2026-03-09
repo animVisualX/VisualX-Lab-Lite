@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  ping:
+  keep-alive:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Streamlit Apps as Human
+      - name: Force Ping Streamlit Apps
         run: |
-          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-double-pendulum.streamlit.app > /dev/null 2>&1
-          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-electronic-configuration.streamlit.app > /dev/null 2>&1
-          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-lissajous.streamlit.app > /dev/null 2>&1
-          echo "All apps pinged successfully using a real Chrome User-Agent!"
+          curl -sL --max-time 15 "https://visualx-lab-double-pendulum.streamlit.app" || true
+          curl -sL --max-time 15 "https://visualx-lab-electronic-configuration.streamlit.app" || true
+          curl -sL --max-time 15 "https://visualx-lab-lissajous.streamlit.app" || true
+          echo "All pings fired successfully!"
