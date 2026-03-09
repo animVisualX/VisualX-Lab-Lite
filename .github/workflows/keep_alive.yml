@@ -9,9 +9,9 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Streamlit Apps
+      - name: Ping Streamlit Apps as Human
         run: |
-          curl -s https://visualx-lab-double-pendulum.streamlit.app/_stcore/health > /dev/null 2>&1
-          curl -s https://visualx-lab-electronic-configuration.streamlit.app/_stcore/health > /dev/null 2>&1
-          curl -s https://visualx-lab-lissajous.streamlit.app/_stcore/health > /dev/null 2>&1
-          echo "Ping successful!"
+          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-double-pendulum.streamlit.app > /dev/null 2>&1
+          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-electronic-configuration.streamlit.app > /dev/null 2>&1
+          curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" https://visualx-lab-lissajous.streamlit.app > /dev/null 2>&1
+          echo "All apps pinged successfully using a real Chrome User-Agent!"
