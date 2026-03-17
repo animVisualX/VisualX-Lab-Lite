@@ -2,7 +2,7 @@ name: Keep Streamlit App Alive
 
 on:
   schedule:
-    - cron: '0 0 */2 * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Force Ping Streamlit Apps
         run: |
-          curl -sL --max-time 15 "https://visualx-lab-double-pendulum.streamlit.app" || true
-          curl -sL --max-time 15 "https://visualx-lab-electronic-configuration.streamlit.app" || true
-          curl -sL --max-time 15 "https://visualx-lab-lissajous.streamlit.app" || true
+          curl -sL --max-time 30 "https://visualx-lab-double-pendulum.streamlit.app" || true
+          curl -sL --max-time 30 "https://visualx-lab-electronic-configuration.streamlit.app" || true
+          curl -sL --max-time 30 "https://visualx-lab-lissajous.streamlit.app" || true
           echo "All pings fired successfully!"
