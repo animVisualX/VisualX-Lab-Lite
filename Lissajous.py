@@ -8,8 +8,8 @@ _s.markdown("<style>[data-testid='stHeader'],header,footer,[data-testid='stSideb
 with _s.container():
     _s.markdown("<div class='c_p'>", unsafe_allow_html=True)
     _c1, _c2 = _s.columns(2)
-    with _c1: _a = _s.slider("FREQUENCY  X (a)", 1, 10, 3)
-    with _c2: _b = _s.slider("FREQUENCY  Y (b)", 1, 10, 2)
+    with _c1: _a = _s.slider("FREQUENCY X (a)", 1, 10, 3)
+    with _c2: _b = _s.slider("FREQUENCY Y (b)", 1, 10, 2)
     _s.markdown("</div>", unsafe_allow_html=True)
 
 _js = "<div id='w' style='width:100%;height:65vh;background:#050505;overflow:hidden;margin-top:15px;border-radius:8px;'><canvas id='c' style='width:100%;height:100%;display:block;'></canvas></div><script>const c=document.getElementById('c'),x=c.getContext('2d');let w,h,t=0;function r(){const e=document.getElementById('w');w=c.width=e.offsetWidth;h=c.height=e.offsetHeight;}function l(){x.clearRect(0,0,w,h);x.strokeStyle='#111';x.lineWidth=1;for(let i=0;i<w;i+=w/20){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke();}for(let j=0;j<h;j+=h/10){x.beginPath();x.moveTo(0,j);x.lineTo(w,j);x.stroke();}x.strokeStyle='#00FFFF';x.lineWidth=2;x.shadowBlur=0;x.beginPath();const a=V_A,b=V_B,s=Math.min(w,h)*0.4,cx=w/2,cy=h/2;for(let th=0;th<=Math.PI*2;th+=0.01){let px=cx+Math.sin(a*th+t)*s,py=cy+Math.sin(b*th)*s;if(th===0)x.moveTo(px,py);else x.lineTo(px,py);}let ex=cx+Math.sin(a*Math.PI*2+t)*s,ey=cy+Math.sin(b*Math.PI*2)*s;x.lineTo(ex,ey);x.closePath();x.stroke();let tx=cx+Math.sin(t*a+t)*s,ty=cy+Math.sin(t*b)*s;x.beginPath();x.arc(tx,ty,6,0,2*Math.PI);x.fillStyle='#FF007F';x.shadowBlur=0;x.fill();t-=0.006;requestAnimationFrame(l);}window.addEventListener('resize',r);r();l();</script>"
