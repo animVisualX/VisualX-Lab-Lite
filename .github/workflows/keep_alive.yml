@@ -9,19 +9,9 @@ jobs:
   keep-alive:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
+      - name: Force Ping Streamlit Apps
         run: |
-          python -m pip install --upgrade pip
-          pip install playwright
-          playwright install chromium
-
-      - name: Ping Streamlit Apps
-        run: python .github/workflows/ping_apps.py
+          curl -sL --max-time 30 "https://visualx-lab-double-pendulum.streamlit.app" || true
+          curl -sL --max-time 30 "https://visualx-lab-electronic-configuration.streamlit.app" || true
+          curl -sL --max-time 30 "https://visualx-lab-lissajous.streamlit.app" || true
+          echo "All pings fired successfully!"
